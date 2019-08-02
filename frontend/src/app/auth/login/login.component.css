@@ -1,0 +1,10 @@
+.spanVaild{
+    color: red;
+}
+.setimg{
+    background-image: url("https://ak9.picdn.net/shutterstock/videos/21971689/thumb/1.jpg");
+    background-size: 100% 100%;
+    height: 100vh;
+    float: left;
+    width: 100%
+}
