@@ -1,6 +1,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
@@ -12,12 +13,20 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+		<!-- <script src="../../assets/javascriptFiles/chatScript.js"></script> -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<!--Coded With Love By Mutiullah Samim-->
 	<body>
-		<!-- <app-chat-header-outlet></app-chat-header-outlet>  -->
 		
-       <input class="form-control" [(ngModel)]="user" placeholder="Enter your Name">
+	   <input class="form-control" [(ngModel)]="user" placeholder="Enter your Name">
+	    <div class="form-group">
+                            <select id="groupDroupDown" class="dropdown-menu1" (change)="chooseGroup($event.target.value)" [(ngModel)]="selectGroup">
+                                <option value="">Select Group</option>
+                                <option value="G1">G1</option>
+                                <option value="G2">G2</option>
+                            </select> 
+                        </div>
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
 				<div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
@@ -111,23 +120,42 @@
 									<span><i class="fas fa-video"></i></span>
 									<span><i class="fas fa-phone"></i></span>
 								</div> -->
+								<div class="matmenu" style="float: right;">
+										<button mat-icon-button [matMenuTriggerFor]="menu">
+											<mat-icon>more_vert</mat-icon>
+										  </button>
+										  <mat-menu #menu="matMenu">
+											<button mat-menu-item>
+											   <mat-icon>perm_identity</mat-icon>
+											  <span>View Profile</span>
+											</button>
+											<button mat-menu-item (click)="openDialog()" >
+											  <mat-icon>group_add</mat-icon>
+											  <span>Create Group</span>
+											</button>
+											<button mat-menu-item>
+											  <mat-icon>power_settings_new</mat-icon>
+											  <span>Log Out</span>
+											</button>
+										  </mat-menu>
+									</div>	
 							</div>
-							<!-- <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span> -->
-							<div  id="action_menu_btn">
-								<!-- <ul>
+							<!-- <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+							<div class="action_menu">
+								<ul>
 									<li><i class="fas fa-user-circle"></i> View profile</li>
 									<li><i class="fas fa-users"></i> Add to close friends</li>
 									<li><i class="fas fa-plus"></i> Add to group</li>
 									<li><i class="fas fa-ban"></i> Block</li>
-                                </ul> -->
-                                <div class="form-group">
+								</ul>
+							</div> -->
+                                <!-- <div class="form-group">
                             <select id="groupDroupDown" class="dropdown-menu1" (change)="chooseGroup($event.target.value)" [(ngModel)]="selectGroup">
                                 <option value="">Select Group</option>
                                 <option value="G1">G1</option>
                                 <option value="G2">G2</option>
                             </select> 
-                        </div>
-							</div>
+                        </div> -->
 						</div>
 						<div class="card-body msg_card_body">
 					<div *ngFor="let newjoin of joinList" class="newJoinMember">
@@ -188,6 +216,5 @@
 				</div>
 			</div>
         </div>
-       
 	</body>
 </html>

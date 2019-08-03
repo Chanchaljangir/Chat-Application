@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatcommServiceService } from 'src/app/shared/chatcomm-service.service';
+// import {MatDialog, MatDialogConfig,MatDialogRef} from '@angular/material/dialog';
+// import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-chat',
@@ -12,9 +14,12 @@ export class ChatComponent implements OnInit {
  joinList:any[]=[];
  msgList:any[]=[];
  msg:String;
-  constructor(private chatcommService:ChatcommServiceService) { }
+  constructor(private chatcommService:ChatcommServiceService,
+    // public dialog: MatDialog, private dashboardComp: MatDialogRef<DashboardComponent>
+    ) { }
 
   ngOnInit() {
+    // document.getElementById("action_menu").style.visibility="hidden";
     this.chatcommService.joinNewGroup().subscribe(
       (res)=>{
         console.log('Server response is ',res);
@@ -58,4 +63,17 @@ export class ChatComponent implements OnInit {
   leave(){
     this.chatcommService.leaveGroup({name:this.user,group:this.selectedGroup});
   }
+  // openDialog() {
+  //   const dialogConfig = new MatDialogConfig();
+
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.autoFocus = true;
+
+  //   this.dialog.open(this.dashboardComp, dialogConfig);
+  // } 
 }
+// @Component({
+//   selector: 'app-dashboard',
+//   templateUrl: './dashboard.component.html',
+// })
+// export class DashboardComponent {}
