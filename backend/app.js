@@ -1,5 +1,16 @@
-var express= require('express');
-var app= express();
+const express =require('express');
+const app = express();
+const mongoose = require('mongoose');
+const route = require('./routes/route');
+const config = require('./config/database');
+// const bodyparser = require('body-parser');
+const passport=require('passport');
+const bcrypt=require('bcryptjs');
+const path=require('path');
+const cors=require('cors');
+const ENV=require('dotenv');
+ENV.config();
+
 var http= require('http');
 var server= http.createServer(app);
 // var io=require('socket.io')(3000);
@@ -11,6 +22,8 @@ const port=3000;
 server.listen(3000,()=>{
     console.log('server start at port ');
 })
+
+
 io.on('connection',(socket)=>{
     console.log('Socket opened');
 //get message for join group
@@ -59,3 +72,6 @@ socket.on('chatting',(data)=>{
     // })
 })
 })
+
+
+

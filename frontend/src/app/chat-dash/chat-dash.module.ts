@@ -12,15 +12,19 @@ import {MatIconModule} from '@angular/material/icon';
 // import "~@angular/material/prebuilt-themes/indigo-pink.css";
 import { MatDialogModule} from '@angular/material';
 import 'hammerjs';
+import { AddGroupComponent } from './add-group/add-group.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, ChatComponent],
+  declarations: [DashboardComponent, ChatComponent, AddGroupComponent],
   imports: [
     CommonModule, 
     FormsModule,
     BrowserAnimationsModule,NoopAnimationsModule,
     MatButtonModule, MatCheckboxModule,MatMenuModule,MatIconModule,MatDialogModule  
+  ],
+  entryComponents:[
+    AddGroupComponent
   ],
   exports: [MatButtonModule, MatCheckboxModule,MatIconModule,MatDialogModule ],
 })

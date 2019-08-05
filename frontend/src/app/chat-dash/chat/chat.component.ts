@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatcommServiceService } from 'src/app/shared/chatcomm-service.service';
-// import {MatDialog, MatDialogConfig,MatDialogRef} from '@angular/material/dialog';
-// import { DashboardComponent } from '../dashboard/dashboard.component';
+import {MatDialog} from '@angular/material/dialog';
+import { AddGroupComponent } from '../add-group/add-group.component';
 
 @Component({
   selector: 'app-chat',
@@ -14,9 +14,7 @@ export class ChatComponent implements OnInit {
  joinList:any[]=[];
  msgList:any[]=[];
  msg:String;
-  constructor(private chatcommService:ChatcommServiceService,
-    // public dialog: MatDialog, private dashboardComp: MatDialogRef<DashboardComponent>
-    ) { }
+  constructor(private chatcommService:ChatcommServiceService,public dialog: MatDialog) { }
 
   ngOnInit() {
     // document.getElementById("action_menu").style.visibility="hidden";
@@ -63,17 +61,14 @@ export class ChatComponent implements OnInit {
   leave(){
     this.chatcommService.leaveGroup({name:this.user,group:this.selectedGroup});
   }
-  // openDialog() {
-  //   const dialogConfig = new MatDialogConfig();
-
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = true;
-
-  //   this.dialog.open(this.dashboardComp, dialogConfig);
-  // } 
+  openDialog():void {
+    let MatDialogRef=this.dialog.open(AddGroupComponent,{
+      data:"MyVar"
+    })
+    MatDialogRef.afterClosed().subscribe(result=>{
+      console.log("dialog was closed");
+      console.log("dialog result is",result);
+    })
+  }  
 }
-// @Component({
-//   selector: 'app-dashboard',
-//   templateUrl: './dashboard.component.html',
-// })
-// export class DashboardComponent {}
+ 

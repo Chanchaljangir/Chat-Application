@@ -28,9 +28,6 @@ const UserSchema =mongoose.Schema({
     location:{
         type:String
     },
-    address:{
-        type:String
-    },
     profileImg:{
         type:String
     }
