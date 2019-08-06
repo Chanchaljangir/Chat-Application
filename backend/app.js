@@ -101,7 +101,7 @@ socket.on('chatting',(data)=>{
     console.log('start messeging ',data);
     io.in(data.group).emit('newMessage',{
         msg:data.msg,
-        user:data.user,
+        user:data.name,
         date: new Date()
     })
     // socket.in(data.group).broadcast.emit('serverSide_Start Chat',{

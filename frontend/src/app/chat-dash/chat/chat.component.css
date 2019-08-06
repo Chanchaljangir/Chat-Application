@@ -1,5 +1,6 @@
 body,html{
-    height: 100vh;
+    /* height: 100vh; */
+    height: -webkit-fill-available;
     margin: 0;
     background: #7F7FD5;
    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
@@ -175,6 +176,8 @@ border-radius: 25px;
 background-color: #78e08f;
 padding: 10px;
 position: relative;
+/* width: auto; */
+/* float: right; */
 }
 .msg_time{
 position: absolute;

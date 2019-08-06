@@ -31,8 +31,13 @@ private socket = io("http://localhost:3000");
   }
 
 //leave group
-leaveGroup(data){
-  this.socket.emit('leave group',data);
+leaveGroup(user,group){
+  // this.socket.emit('leave group',data);
+  console.log("group leave", group);
+  this.socket.emit('leave group',{
+    name:user,
+    group:group
+  });
 }
 //other person listing user left group
 userLeftGroup(){
@@ -59,7 +64,7 @@ startChat(){
   return new Observable((observe)=>{
     
     this.socket.on('newMessage',(data)=>{
-      console.log("start chatting ",data);
+      console.log("start chatting ",data.user);
         observe.next(data);
     });
   });

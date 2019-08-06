@@ -18,6 +18,7 @@ export class ChatComponent implements OnInit {
  msg:String;
  groups:any[];
  users:any[];
+ checkGpAvaliabl=false;
   constructor(private chatcommService:ChatcommServiceService,public dialog: MatDialog, private chatService:ChatServiceService) { }
 
   ngOnInit() {
@@ -36,6 +37,7 @@ export class ChatComponent implements OnInit {
     this.chatcommService.startChat().subscribe(
       (res)=>{
         console.log('user start chat ',res);
+        // console.log('user start chat ',res.user);
         this.msgList.push(res);
       },
       (err)=>{
@@ -66,6 +68,7 @@ else{
 } 
 });
 
+console.log("cureent user is ",this.user);
 //get users
 this.chatService.getUsers().subscribe(data=>{
   if(data.success){
@@ -78,10 +81,14 @@ else{
   console.log("not get any group some error");
 } 
 });
+ //check group avaliablibility
+ if(this.selectedGroup){
+  this.checkGpAvaliabl=true;
+ }
 
   }
   chooseGroup(selectGroup){
-    console.log("slected group is", selectGroup);
+    console.log("slected group is", selectGroup," user is ", this.user);
     this.chatcommService.joinGroup(this.user,selectGroup);
     this.selectedGroup=selectGroup;
   }
@@ -90,8 +97,11 @@ else{
     this.chatcommService.sendAnyMessage(this.user,this.msg,this.selectedGroup);
   }
   leave(){
-    this.chatcommService.leaveGroup({name:this.user,group:this.selectedGroup});
+    this.chatcommService.leaveGroup(this.user,this.selectedGroup);
+    // this.selectedGroup="";
   }
+
+ 
   openDialog():void {
     let MatDialogRef=this.dialog.open(AddGroupComponent,{
       data:"MyVar"
