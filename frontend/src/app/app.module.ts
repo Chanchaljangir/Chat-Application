@@ -12,6 +12,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastrModule} from 'ngx-toastr';
+import {HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,15 @@ import {MatIconModule} from '@angular/material/icon';
     AuthModule,
     ChatDashModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatCheckboxModule,MatMenuModule,MatIconModule
+    MatButtonModule, MatCheckboxModule,MatMenuModule,MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule, 
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass:'toast-top-right',
+      tapToDismiss:false,
+    }),
   ],
   providers: [ChatcommServiceService],
   bootstrap: [AppComponent]
