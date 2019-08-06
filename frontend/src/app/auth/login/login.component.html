@@ -21,16 +21,16 @@
                                     
                          <div style="margin-bottom: 25px" class="input-group">
                               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                 <input formControlName="email" id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
-                                
+                                 <input formControlName="email" id="login-username" type="text" class="form-control" name="username" value="" placeholder="Email">                                        
+                                 <span *ngIf="!signinForm.get('email').valid && signinForm.get('email').touched" class="spanVaild">Please Enter Your Email</span>
                          </div>
                                 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 <input formControlName="password" id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                              
+                                <span *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched" class="spanVaild">Please Enter Your Password</span>
                         </div>
-                                    
+                                     
 
                                 
                           <div class="input-group">
@@ -47,7 +47,7 @@
 
                                  <div class="col-sm-12 controls">
                                       <!-- <a id="btn-login" href="#" class="btn btn-success" (click)="click()">Login  </a> -->
-                                      <button id="btn-signup" type="submit" class="btn btn-success"><i class="icon-hand-right"></i> Sign In</button>
+                                      <button id="btn-signup" type="submit" class="btn btn-success" [disabled]="!signinForm.valid"><i class="icon-hand-right"></i> Sign In</button>
                                       <span style="margin-left:8px;">or</span>  
                                       <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
                                       

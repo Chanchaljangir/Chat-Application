@@ -12,7 +12,7 @@ private socket = io("http://localhost:3000");
 
   } 
   joinGroup(user,group){
-    console.log("joinGroup fun");
+    console.log("joinGroup fun", group);
     this.socket.emit('new_joinee',{
       name:user,
       group:group

@@ -8,9 +8,14 @@ const jwt=require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 // var quiz=require('../controllers/quiz');
 const User= require('../controllers/user');
+const Group= require('../controllers/group');
 
 // Register User
 router.route('/signup').post(User.addUser);
+
+//create new group
+router.route('/addgroup').post(Group.addGroup);
+router.route('/getgroup').get(Group.getGroup);
 
 //User Login
 // router.route('/authenticate').post(User.Authenticate);

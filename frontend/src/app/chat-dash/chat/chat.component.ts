@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ChatcommServiceService } from 'src/app/shared/chatcomm-service.service';
 import {MatDialog} from '@angular/material/dialog';
 import { AddGroupComponent } from '../add-group/add-group.component';
+import { ChatServiceService } from 'src/app/shared/services/chat/chat-service.service';
+import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-chat',
@@ -14,7 +16,8 @@ export class ChatComponent implements OnInit {
  joinList:any[]=[];
  msgList:any[]=[];
  msg:String;
-  constructor(private chatcommService:ChatcommServiceService,public dialog: MatDialog) { }
+ groups:any[];
+  constructor(private chatcommService:ChatcommServiceService,public dialog: MatDialog, private chatService:ChatServiceService) { }
 
   ngOnInit() {
     // document.getElementById("action_menu").style.visibility="hidden";
@@ -26,7 +29,7 @@ export class ChatComponent implements OnInit {
       (err)=>{
         console.log('server err is ',err);
       }
-    );
+    ); 
 
     //start chat
     this.chatcommService.startChat().subscribe(
@@ -48,6 +51,20 @@ export class ChatComponent implements OnInit {
     (err)=>{
       console.log('user leave err: ',err);
     })
+
+//get groups
+this.chatService.getGroup().subscribe(data=>{
+  if(data.success){
+      console.log("groups are ", data);
+      console.log("gp is ",data.res[0].groupName);
+      this.groups=data.res;  
+      console.log("gpsss is ",this.groups);
+}
+else{ 
+  console.log("not get any group some error");
+} 
+});
+
   }
   chooseGroup(selectGroup){
     console.log("slected group is", selectGroup);

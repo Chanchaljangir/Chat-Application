@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChatComponent } from './chat/chat.component';
-import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -13,13 +12,14 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule} from '@angular/material';
 import 'hammerjs';
 import { AddGroupComponent } from './add-group/add-group.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent, ChatComponent, AddGroupComponent],
   imports: [
     CommonModule, 
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,NoopAnimationsModule,
     MatButtonModule, MatCheckboxModule,MatMenuModule,MatIconModule,MatDialogModule  
   ],

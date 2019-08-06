@@ -47,9 +47,8 @@ export class SignupComponent implements OnInit {
   console.log(this.signupForm.value)
   this.authService.registerUser(this.signupForm.value).subscribe(data=>{
     if(data.success){
-      console.log("user is ",data);
       this.authService.storeUserData(data.res.token,data.res.user);
-        console.log("student data ", data);
+        console.log("user data ", data);
         this.toastr.success(' User logged in'); 
       this.router.navigate(['chat']);   
   }

@@ -3,7 +3,6 @@ import {HttpClient,HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 // import { CookieService } from 'ngx-cookie-service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'

@@ -8,16 +8,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <form class="form-horizontal">
+    <form id="addGroupform" class="form-horizontal" role="form" [formGroup]="addGroupForm" (submit)="addGroup()">
     <h2 mat-dialog-title>Create New Group</h2>
     <!-- <p>{{data.myVar}}</p> --> 
     <div class="form-group"> 
             <label>Enter Group Name<sup>*</sup></label>
-        <input type="text" class="form-control" placeholder="Group Name">
+        <input formControlName="groupName" type="text" class="form-control" placeholder="Group Name">
+        <span *ngIf="!addGroupForm.get('groupName').valid && addGroupForm.get('groupName').touched" class="spanVaild">Please Enter Group Name</span>
     </div>
     <div class="form-group">
             <!-- <div class="col-md-offset-3 col-md-9"> -->
-                <button class="btn btn-primary" (click)="groupSave()" style="margin: 16px;">Save</button>
+                <button class="btn btn-primary" style="margin: 16px;" [disabled]="!addGroupForm.valid">Save</button>
                 <button class="btn btn-primary" (click)="close()">Close</button>
             <!-- </div> -->
     </div>
