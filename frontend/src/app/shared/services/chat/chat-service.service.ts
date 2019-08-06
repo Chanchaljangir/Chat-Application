@@ -24,6 +24,14 @@ getGroup():Observable<any>{
   return this.http.get('http://localhost:3000/api/getgroup',{headers:headers})
 .pipe(map(res=>res));
 }
+//get Users
+getUsers():Observable<any>{ 
+  let headers=new HttpHeaders();
+  headers.append('Content-Type','application/json');
+  return this.http.get('http://localhost:3000/api/getusers',{headers:headers})
+.pipe(map(res=>res));
+}
+
 
 }
  

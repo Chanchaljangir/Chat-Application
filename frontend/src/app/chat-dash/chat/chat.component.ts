@@ -17,6 +17,7 @@ export class ChatComponent implements OnInit {
  msgList:any[]=[];
  msg:String;
  groups:any[];
+ users:any[];
   constructor(private chatcommService:ChatcommServiceService,public dialog: MatDialog, private chatService:ChatServiceService) { }
 
   ngOnInit() {
@@ -55,10 +56,23 @@ export class ChatComponent implements OnInit {
 //get groups
 this.chatService.getGroup().subscribe(data=>{
   if(data.success){
-      console.log("groups are ", data);
-      console.log("gp is ",data.res[0].groupName);
+      // console.log("groups are ", data);
+      // console.log("gp is ",data.res[0].groupName);
       this.groups=data.res;  
-      console.log("gpsss is ",this.groups);
+      console.log("group are ",this.groups);
+}
+else{ 
+  console.log("not get any group some error");
+} 
+});
+
+//get users
+this.chatService.getUsers().subscribe(data=>{
+  if(data.success){
+      // console.log("groups are ", data);
+      // console.log("gp is ",data.res[0].groupName);
+      this.users=data.res;  
+      console.log("users are ",this.users);
 }
 else{ 
   console.log("not get any group some error");

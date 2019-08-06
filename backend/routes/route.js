@@ -12,6 +12,7 @@ const Group= require('../controllers/group');
 
 // Register User
 router.route('/signup').post(User.addUser);
+router.route('/getusers').get(User.getUsers);
 
 //create new group
 router.route('/addgroup').post(Group.addGroup);

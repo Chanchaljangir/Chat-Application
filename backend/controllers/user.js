@@ -36,7 +36,21 @@ catch(err){
             res.send(err);
         }
 },
-
+getUsers: async(req,res)=>{
+    try{
+        const result =await User.find();
+        console.log('result is........',result);
+        result ? res.status(200).send({
+            success:true,message:"all Users",res:result
+        }):
+        res.status(422).send({
+            success:false,message:'not getting any user'
+        });
+    }catch(err){
+        console.log("catch err is........",err);
+        res.send(err);
+    }
+}
 // user authentication
 // authenticate: async(req,res)=>{
 //     try{
