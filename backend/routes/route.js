@@ -9,6 +9,7 @@ const bcrypt=require('bcryptjs');
 // var quiz=require('../controllers/quiz');
 const User= require('../controllers/user');
 const Group= require('../controllers/group');
+const Chat= require('../controllers/chat');
 
 // Register User
 router.route('/signup').post(User.addUser);
@@ -17,6 +18,9 @@ router.route('/getusers').get(User.getUsers);
 //create new group
 router.route('/addgroup').post(Group.addGroup);
 router.route('/getgroup').get(Group.getGroup);
+//chat
+router.route('/chatting').post(Chat.startChat);
+router.route('/getchat').get(Chat.getChat);
 
 //User Login
 // router.route('/authenticate').post(User.Authenticate);
