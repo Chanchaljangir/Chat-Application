@@ -27,7 +27,7 @@ addGroup(){
   this.chatService.addGroup(this.addGroupForm.value).subscribe(data=>{
     if(data.success){
         console.log("new group is ", data);
-        this.toastr.success(' Group Added');   
+        this.toastr.success(' Group Added');    
   }
   else{ 
     // console.log(data);
