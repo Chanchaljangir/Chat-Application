@@ -19,7 +19,7 @@
 	<!--Coded With Love By Mutiullah Samim-->
 	<body>
 		
-	   <input class="form-control" [(ngModel)]="user" placeholder="Enter your Name">
+	   <input class="form-control" [(ngModel)]="user" placeholder="Enter your Nick Name">
 	    <div class="form-group">
                             <select id="groupDroupDown" class="dropdown-menu1" (change)="chooseGroup($event.target.value)" [(ngModel)]="selectGroup">
                                 <option value="">Select Group</option>
@@ -145,20 +145,18 @@
 						<div class="card-body msg_card_body">
 					<div *ngFor="let newjoin of joinList" class="newJoinMember">
 						<p>
-								{{newjoin.joinmsg}}</p>
+								{{newjoin.msg}}</p>
 								<p>{{newjoin.date | date:'long'}}</p>
 					</div>
 			<!-- get odd chat msg -->
-			<div *ngFor="let oddmsg of getmsg">
+			<!-- <div *ngFor="let oddmsg of getmsg">
 								
 				<div class="d-flex justify-content-end mb-4" *ngIf="this.user===oddmsg .user;else sendmsg" >
-						<!-- <div style="float: left;width: 50%;"> -->
 									<div class="msg_cotainer_send">
 									
 											{{oddmsg.msg}}<br>
 											<span class="msg_time_send">{{oddmsg.date}}</span>
 										</div>
-									<!-- </div>  -->
 									
 									<div class="img_cont_msg">
 								<img src="" class="rounded-circle user_img_msg">
@@ -175,8 +173,8 @@
 									</div>
 				</div>
 				</ng-template>
-							</div>
-			<!-- start chatting				 -->
+							</div>-->
+			<!-- start chatting	-->
 			<div *ngFor="let chat of msgList">				
 			<div class="d-flex justify-content-end mb-4" *ngIf="this.user===chat.user;else sendmsg" >
 					<!-- <div style="float: left;width: 50%;"> -->

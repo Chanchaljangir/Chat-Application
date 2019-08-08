@@ -79,7 +79,7 @@ io.on('connection',(socket)=>{
         //     date: new Date()
         // })
         socket.broadcast.to(data.group).emit('new user join',{
-            joinmsg: data.name +' successfully join '+ data.group,
+            msg: data.name +' successfully join '+ data.group,
             user:data.name,
             date: new Date()
         })
@@ -89,7 +89,7 @@ io.on('connection',(socket)=>{
     socket.on('leave group',(data)=>{
         console.log("user leave group is ", data);
         socket.broadcast.to(data.group).emit('left group',{
-            leavemsg: data.name +' left the group '+ data.group,
+            msg: data.name +' left the group '+ data.group,
             user:data.name,
             date: new Date()
         })
@@ -99,6 +99,10 @@ io.on('connection',(socket)=>{
 //send msg or start chat
 socket.on('chatting',(data)=>{
     console.log('start messeging ',data);
+     //listen on typing
+     socket.on('typing', (data) => {
+    	socket.broadcast.emit('typing', {user : name})
+    });
     io.in(data.group).emit('newMessage',{
         msg:data.msg,
         user:data.name,

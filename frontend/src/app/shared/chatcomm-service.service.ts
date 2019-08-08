@@ -62,7 +62,9 @@ userLeftGroup(){
 //start user chat on server new message
 startChat(){
   return new Observable((observe)=>{
-    
+    this.socket.on('typing',(data)=>{
+      observe.next(data);
+    });
     this.socket.on('newMessage',(data)=>{
       console.log("start chatting ",data.user);
         observe.next(data);

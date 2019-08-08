@@ -62,16 +62,16 @@ export class ChatComponent implements OnInit {
 //get odd chat
 this.chatService.getChat().subscribe(data=>{
     if(data.success)
-    {console.log("get chat data is ",data.res);
-    console.log("get chat data msg only ",data.res[0].msg);
-  this.getmsg=data.res;
-console.log("get msg is ", this.getmsg)}
+    { // console.log("get chat data is ",data.res);
+    // console.log("get chat data msg only ",data.res[0].msg);
+      this.getmsg=data.res;
+      console.log("get msg is ", this.getmsg)}
 }); 
 //left group
     this.chatcommService.userLeftGroup().subscribe(      
       (res)=>{
       console.log('user leave the group... ',res);
-      this.msgList.push(res);
+      this.joinList.push(res);
     },
     (err)=>{
       console.log('user leave err: ',err);
